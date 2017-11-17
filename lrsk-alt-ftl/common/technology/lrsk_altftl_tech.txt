@@ -1,0 +1,532 @@
+##########################################################################
+# Alternative FTL
+# Technologies
+# Author: littleraskol
+##########################################################################
+
+#Due to wormhole weirdness, these two techs are weighted to be near mutually exclusive so that wormhole empires don't have more options.
+
+@lrskaltftlcost = 2500
+@lrskaltftlwght = 60
+
+# ##################
+# Warp Drive 
+# ##################
+
+# Rare tech, slow but provides flexibility unmatched by other types.
+
+tech_lrsk_altftl_warp_drive = {
+	cost = @lrskaltftlcost
+	area = physics
+	tier = 2
+	category = { field_manipulation }
+	weight = @lrskaltftlwght
+	prerequisites = { "tech_cold_fusion_power" }
+	
+	is_rare = yes
+	is_reverse_engineerable = yes
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			OR = {
+				has_technology = "tech_warp_drive_1"
+				has_technology = "tech_warp_drive_2"
+				has_technology = "tech_warp_drive_3"
+				has_technology = "tech_psi_jump_drive_1"
+				has_technology = "tech_jump_drive_1"
+			}
+		}
+		modifier = {
+			factor = 0.75
+			NOT {
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_expertise_field_manipulation"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			NOR = {
+				#has_technology = "tech_warp_drive_2"
+				has_technology = "tech_hyper_drive_2"
+				has_technology = "tech_wormhole_generation_2"
+			}
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				#has_technology = "tech_warp_drive_3"
+				has_technology = "tech_hyper_drive_3"
+				has_technology = "tech_wormhole_generation_3"
+			}
+		}
+		#modifier = {
+		#	factor = 1.25
+		#	OR = {
+		#		has_technology = "tech_lrsk_altftl_wormhole_generation"
+		#		has_technology = "tech_lrsk_altftl_hyper_drive"
+		#		#has_technology = "tech_lrsk_altftl_warp_drive"
+		#	}
+		#}
+		modifier = {
+			factor = 0.01
+			OR = {
+				has_technology = "tech_lrsk_altftl_hyper_drive"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 3 #FTL techs are good
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_field_manipulation"
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_technology = "tech_warp_drive_1"
+				has_technology = "tech_warp_drive_2"
+				has_technology = "tech_warp_drive_3"
+			}
+		}
+	}
+	
+	prereqfor_desc = {
+		component = {
+			title = "TECH_UNLOCK_LRSK_ALTFTL_WARP_DRIVE_TITLE"
+			desc = "TECH_UNLOCK_LRSK_ALTFTL_WARP_DRIVE_DESC"
+		}
+	}	
+}
+
+
+# ##################
+# Hyperdrive
+# ##################
+
+# Rare tech, mid-level warmup speed, expensive component.
+
+tech_lrsk_altftl_hyper_drive  = {
+	cost = @lrskaltftlcost
+	area = physics
+	tier = 2
+	category = { particles }
+	weight = @lrskaltftlwght
+	prerequisites = { "tech_hyperlane_mapping" }
+	
+	is_rare = yes
+	is_reverse_engineerable = yes
+	
+	feature_flags = {
+		hyperlanes
+	}
+	
+	weight_modifier = {
+		factor = 1.25 	#prereq is a rare tech so give this a boost
+		modifier = {
+			factor = 0
+			OR = {
+				has_technology = "tech_hyper_drive_1"
+				has_technology = "tech_hyper_drive_2"
+				has_technology = "tech_hyper_drive_3"
+			}
+		}
+		modifier = {
+			factor = 0.75
+			NOT {
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_expertise_particles"
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			NOR = {
+				has_technology = "tech_warp_drive_2"
+				#has_technology = "tech_hyper_drive_2"
+				has_technology = "tech_wormhole_generation_2"
+			}
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_technology = "tech_warp_drive_3"
+				#has_technology = "tech_hyper_drive_3"
+				has_technology = "tech_wormhole_generation_3"
+			}
+		}
+		#modifier = {
+		#	factor = 1.25
+		#	OR = {
+		#		has_technology = "tech_lrsk_altftl_wormhole_generation"
+		#		#has_technology = "tech_lrsk_altftl_hyper_drive"
+		#		has_technology = "tech_lrsk_altftl_warp_drive"
+		#	}
+		#}
+		modifier = {
+			factor = 0.01
+			OR = {
+				has_technology = "tech_lrsk_altftl_warp_drive"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 3 #FTL techs are good
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_technology = "tech_hyper_drive_1"
+				has_technology = "tech_hyper_drive_2"
+				has_technology = "tech_hyper_drive_3"
+			}
+		}
+	}
+	
+	prereqfor_desc = {
+		component = {
+			title = "TECH_UNLOCK_LRSK_ALTFTL_HYPER_DRIVE_TITLE"
+			desc = "TECH_UNLOCK_LRSK_ALTFTL_HYPER_DRIVE_DESC"
+		}
+	}	
+}
+
+# ##################
+# Wormhole
+# ##################
+
+# Rare tech, provides max range but no speed inc
+# Commented out until I can actually make it work...
+
+#tech_lrsk_altftl_wormhole_generation  = {
+#	cost = @lrskaltftlcost
+#	area = physics
+#	tier = 2
+#	category = { field_manipulation }
+#	weight = @lrskaltftlwght
+#	prerequisites = { "tech_cold_fusion_power" }
+#	
+#	is_rare = yes
+#	is_reverse_engineerable = yes
+#	
+#	weight_modifier = {
+#		modifier = {
+#			factor = 0
+#			OR = {
+#				has_technology = "tech_wormhole_generation_1"
+#				has_technology = "tech_wormhole_generation_2"
+#				has_technology = "tech_wormhole_generation_3"
+#			}
+#		}
+#		modifier = {
+#			factor = 0.75
+#			NOT {
+#				research_leader = {
+#					area = physics
+#					has_trait = "leader_trait_expertise_field_manipulation"
+#				}
+#			}
+#		}
+#		modifier = {
+#			factor = 0.25
+#			NOR = {
+#				has_technology = "tech_warp_drive_2"
+#				has_technology = "tech_hyper_drive_2"
+#				#has_technology = "tech_wormhole_generation_2"
+#			}
+#		}
+#		modifier = {
+#			factor = 1.25
+#			OR = {
+#				has_technology = "tech_warp_drive_3"
+#				has_technology = "tech_hyper_drive_3"
+#				#has_technology = "tech_wormhole_generation_3"
+#			}
+#		}
+#		modifier = {
+#			factor = 1.25
+#			OR = {
+#				#has_technology = "tech_lrsk_altftl_wormhole_generation"
+#				has_technology = "tech_lrsk_altftl_hyper_drive"
+#				has_technology = "tech_lrsk_altftl_warp_drive"
+#			}
+#		}
+#	}
+#	
+#	ai_weight = {
+#		factor = 3 #FTL techs are good
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#		modifier = {
+#			factor = 0
+#			OR = {
+#				has_technology = "tech_wormhole_generation_1"
+#				has_technology = "tech_wormhole_generation_2"
+#				has_technology = "tech_wormhole_generation_3"
+#			}
+#		}
+#	}
+#	
+#	prereqfor_desc = {
+#		component = {
+#			title = "TECH_UNLOCK_LRSK_ALTFTL_WORMHOLE_DRIVE_TITLE"
+#			desc = "TECH_UNLOCK_LRSK_ALTFTL_WORMHOLE_DRIVE_DESC"
+#		}
+#	}	
+#	
+#	modifier = {
+#		ship_ftl_wormhole_range_mult = 0.5
+#	}
+#}
+
+#tech_wormhole_generation_2  = {
+#	cost = @tier2cost1
+#	area = physics
+#	tier = 2
+#	category = { field_manipulation }
+#	ai_update_type = all
+#	is_reverse_engineerable = no
+#	prerequisites = { "tech_wormhole_generation_1" }
+#	weight = @tier2weight1
+#	
+#	weight_modifier = {
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#	}
+#	
+#	modifier = {
+#		ship_ftl_wormhole_speed_mult = 0.25
+#		ship_ftl_wormhole_range_mult = 0.5
+#	}
+#	
+#	ai_weight = {
+#		factor = 4 #FTL techs are good
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#	}
+#}
+#
+#tech_wormhole_generation_3  = {
+#	cost = @tier3cost1
+#	area = physics
+#	tier = 3
+#	category = { field_manipulation }
+#	ai_update_type = all
+#	is_reverse_engineerable = no	
+#	prerequisites = { "tech_wormhole_generation_2" }
+#	weight = @tier3weight1
+#	
+#	weight_modifier = {
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#	}
+#	
+#	modifier = {
+#		ship_ftl_wormhole_speed_mult = 0.25
+#		ship_ftl_wormhole_range_mult = 0.5
+#	}
+#	
+#	ai_weight = {
+#		factor = 4 #FTL techs are good
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#	}
+#}
+
+
+#tech_hyper_drive_2 = {
+#	cost = @tier2cost1
+#	area = physics
+#	tier = 2
+#	category = { particles }
+#	ai_update_type = all
+#	is_reverse_engineerable = no
+#	prerequisites = { "tech_hyper_drive_1" }
+#	weight = @tier2weight1
+#	
+#	weight_modifier = {
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_particles"
+#			}
+#		}
+#	}
+#	
+#	prereqfor_desc = {
+#		component = {
+#			title = "TECH_UNLOCK_HYPERDRIVE_2_TITLE"
+#			desc = "TECH_UNLOCK_HYPERDRIVE_2_DESC"
+#		}
+#	}	
+#	
+#	ai_weight = {
+#		factor = 4 #FTL techs are good
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_particles"
+#			}
+#		}
+#	}
+#}
+#
+#tech_hyper_drive_3 = {
+#	cost = @tier3cost1
+#	area = physics
+#	tier = 3
+#	category = { particles }
+#	ai_update_type = all
+#	is_reverse_engineerable = no
+#	prerequisites = { "tech_hyper_drive_2" }
+#	weight = @tier3weight1
+#	
+#	weight_modifier = {
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_particles"
+#			}
+#		}
+#	}
+#	
+#	prereqfor_desc = {
+#		component = {
+#			title = "TECH_UNLOCK_HYPERDRIVE_3_TITLE"
+#			desc = "TECH_UNLOCK_HYPERDRIVE_3_DESC"
+#		}
+#	}
+#	
+#	ai_weight = {
+#		factor = 4 #FTL techs are good
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_particles"
+#			}
+#		}
+#	}
+#}
+
+
+
+#tech_warp_drive_2 = {
+#	cost = @tier2cost1
+#	area = physics
+#	tier = 2
+#	category = { field_manipulation }
+#	ai_update_type = all
+#	is_reverse_engineerable = no	
+#	prerequisites = { "tech_warp_drive_1" }
+#	weight = @tier2weight1
+#	
+#	weight_modifier = {
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#	}
+#	
+#	prereqfor_desc = {
+#		component = {
+#			title = "TECH_UNLOCK_WARPDRIVE_2_TITLE"
+#			desc = "TECH_UNLOCK_WARPDRIVE_2_DESC"
+#		}
+#	}
+#	
+#	ai_weight = {
+#		factor = 4 #FTL techs are good
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#	}
+#}
+#
+#tech_warp_drive_3 = {
+#	cost = @tier3cost1
+#	area = physics
+#	tier = 3
+#	category = { field_manipulation }
+#	ai_update_type = all
+#	is_reverse_engineerable = no	
+#	prerequisites = { "tech_warp_drive_2" }
+#	weight = @tier3weight1
+#	
+#	weight_modifier = {
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#	}
+#	
+#	prereqfor_desc = {
+#		component = {
+#			title = "TECH_UNLOCK_WARPDRIVE_3_TITLE"
+#			desc = "TECH_UNLOCK_WARPDRIVE_3_DESC"
+#		}
+#	}
+#
+#	ai_weight = {
+#		factor = 4 #FTL techs are good
+#		modifier = {
+#			factor = 1.25
+#			research_leader = {
+#				area = physics
+#				has_trait = "leader_trait_expertise_field_manipulation"
+#			}
+#		}
+#	}
+#}

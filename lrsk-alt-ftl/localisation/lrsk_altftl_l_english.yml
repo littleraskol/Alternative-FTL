@@ -1,0 +1,28 @@
+﻿l_english:
+
+ LRSK_ALTFTL_WARP_DRIVE:0 "Warp Drive"
+ LRSK_ALTFTL_WARP_DRIVE_DESC:1 "Warp Drives allow FTL travel to and from the edges of star systems, with limited range and wind-up and wind-down periods at departure and arrival."
+ 
+ LRSK_ALTFTL_HYPER_DRIVE:0 "Hyper Drive"
+ LRSK_ALTFTL_HYPER_DRIVE_DESC:1 "Ships equipped with Hyper Drives can only travel along interstellar hyperlanes, but at very high speed."
+ 
+ LRSK_ALTFTL_WORMHOLE_DRIVE:1 "Wormhole Modulator"
+ LRSK_ALTFTL_WORMHOLE_DRIVE_DESC:0 "Ships equipped with Wormhole Modulators attune the portals created by Wormhole Generators to allow for passage between systems."
+ 
+ tech_lrsk_altftl_wormhole_generation:0 "Subspace Wormhole Projection"
+ tech_lrsk_altftl_wormhole_generation_desc:0 "By tunneling directly through subspace, a temporary conduit can be established between two different points in normal space. Travel between these points would be near instantaneous.\n\n"
+ 
+ tech_lrsk_altftl_hyper_drive:0 "Hyperspace Lane Attunement"
+ tech_lrsk_altftl_hyper_drive_desc:0 "Like the strands of a spider web, the extra-dimensional realm of hyperspace runs between the gravity wells of most stars. Faster than light travel at a very high speed is theoretically possible along these hyperlanes.\n\n"
+ 
+ tech_lrsk_altftl_warp_drive:0 "Warp Bubble Generation"
+ tech_lrsk_altftl_warp_drive_desc:0 "By enveloping a vessel in a warp field and forming a subspace bubble around it, unrestricted faster than light travel is theoretically possible.\n\n"
+ 
+ TECH_UNLOCK_LRSK_ALTFTL_WARP_DRIVE_TITLE:0 "§HUnlocks Component:§! $LRSK_ALTFTL_WARP_DRIVE$"
+ TECH_UNLOCK_LRSK_ALTFTL_WARP_DRIVE_DESC:0 "§H$LRSK_ALTFTL_WARP_DRIVE$§!\n$LRSK_ALTFTL_WARP_DRIVE_DESC$"
+ 
+ TECH_UNLOCK_LRSK_ALTFTL_HYPER_DRIVE_TITLE:0 "§HUnlocks Component:§! $LRSK_ALTFTL_HYPER_DRIVE$"
+ TECH_UNLOCK_LRSK_ALTFTL_HYPER_DRIVE_DESC:0 "§H$LRSK_ALTFTL_HYPER_DRIVE$§!\n$LRSK_ALTFTL_HYPER_DRIVE_DESC$"
+ 
+ TECH_UNLOCK_LRSK_ALTFTL_WORMHOLE_DRIVE_TITLE:0 "§HUnlocks Component:§! $LRSK_ALTFTL_WORMHOLE_DRIVE$"
+ TECH_UNLOCK_LRSK_ALTFTL_WORMHOLE_DRIVE_DESC:0 "§H$LRSK_ALTFTL_WORMHOLE_DRIVE$§!\n$LRSK_ALTFTL_WORMHOLE_DRIVE_DESC$"

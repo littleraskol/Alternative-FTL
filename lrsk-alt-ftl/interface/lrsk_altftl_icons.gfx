@@ -1,0 +1,17 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_ship_part_lrsk_altftl_warp_drive"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_lrsk_altftl_warp_drive.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ship_part_lrsk_altftl_hyper_drive"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_lrsk_altftl_hyper_drive.dds"
+	}
+
+	spriteType = {
+		name = "GFX_ship_part_lrsk_altftl_wormhole"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_lrsk_altftl_wormhole.dds"
+	}
+}
